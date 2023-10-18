@@ -31,11 +31,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const server = http.createServer(app);
 
-app.get("/all_videos", (_req, res) => {
-	(async () => {
-		const data = await returnShowsList();
-		res.send(data);
-	})();
+app.get("/all_videos", async (_req, res): Promise<void> => {
+	const data = await returnShowsList();
+	res.status(200).send(data);
 });
 
 server.listen(PORT, () => {

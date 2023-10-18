@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
-
 interface IShows {
 	name: string;
 	episodes: string[];
@@ -7,20 +5,20 @@ interface IShows {
 
 interface IDefaultData {
 	directories: {
-		id: typeof uuidv4;
+		id: string;
 		path: string;
 		folderName: string;
 		fileCount: number;
 	}[];
 
 	shows: {
-		refId: typeof uuidv4;
+		refId: string;
 		showName: string;
 		// thumbnails
 	}[];
 
 	movies: {
-		refId: typeof uuidv4;
+		refId: string;
 		movieName: string;
 		// thumbnails
 	}[];

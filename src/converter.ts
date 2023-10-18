@@ -5,12 +5,11 @@ import fs from "node:fs";
 
 const convertAll = (pathToInject: string) => {
 	//TODO - make this function into a task generator for vectorised conversion.
+	pathToInject;
 
 	const videoPath = path.join("g:", "Adventure Time", "Season 1");
 
-	const files = fs
-		.readdirSync(videoPath)
-		.filter((file) => file.endsWith(".mp4"));
+	const files = fs.readdirSync(videoPath).filter((file) => file.endsWith(".mp4"));
 	console.log(files[0].split(".mp4")[0]);
 
 	ffmpeg.setFfmpegPath(installer.path);
@@ -18,16 +17,13 @@ const convertAll = (pathToInject: string) => {
 	files.forEach((file, i) => {
 		const absolutePath = path.resolve(path.join(videoPath, files[i]));
 
-		const file_dir = path.join(
-			__dirname,
-			"..",
-			"videos",
-			path.basename(file.split(".mp4")[0])
-		);
+		const file_dir = path.join(__dirname, "..", "videos", path.basename(file.split(".mp4")[0]));
 
 		try {
 			fs.mkdirSync(file_dir);
-		} catch (err) {}
+		} catch (err) {
+			console.error(err);
+		}
 
 		ffmpeg(absolutePath.toString())
 			.videoCodec("libx264")
