@@ -5,7 +5,8 @@ import helmet from "helmet";
 import bodyParser from "body-parser";
 import http from "http";
 import path from "path";
-import { returnShowsList } from "./directory";
+import { returnShowsList } from "./directory/directory";
+import directoryRouter from "./directory/directoryRouter";
 
 dontenv.config();
 
@@ -28,7 +29,7 @@ app.use(helmet());
 app.use(cors({ origin: "http://localhost:8080", credentials: false }));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use("/directory", directoryRouter);
 const server = http.createServer(app);
 
 app.get("/all_videos", async (_req, res): Promise<void> => {
