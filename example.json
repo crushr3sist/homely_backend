@@ -1,0 +1,29 @@
+{
+  "directories": [
+    {
+      "id": "v90h9248qh982h398r",
+      "path": "c://",
+      "folderName": "adventureTime",
+      "fileCount": 6
+    },
+    {
+      "id": "f90h9248qh982h398r",
+      "path": "c://",
+      "folderName": "regularShow",
+      "fileCount": 5
+    },
+    {
+      "id": "h90h9248qh982h398r",
+      "path": "c://",
+      "folderName": "interstellar",
+      "fileCount": 1
+    }
+  ],
+
+  "shows": [
+    { "refId": "v90h9248qh982h398r", "showName": "adventureTime" },
+    { "refId": "f90h9248qh982h398r", "showName": "regularShow" }
+  ],
+
+  "movies": [{ "refId": "h90h9248qh982h398r", "movieName": "interstellar" }]
+}
