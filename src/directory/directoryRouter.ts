@@ -9,14 +9,15 @@ directoryRouter.post("/add", async (req, res) => {
 
 		const parsedData = parseDirs(dirData);
 
-		res.status(202).send(parsedData);
+		updateDirData(parsedData);
 
-		// updateDirData(parsedData);
+		res.status(202).send(parsedData);
 
 		// digestPathVideos(parsedData);
 
 		// res.status(202).send("Directory Committed");
 	} catch (e) {
+		console.log(e);
 		res.status(500).send(`there was an error digesting files error:${e}`);
 	}
 });

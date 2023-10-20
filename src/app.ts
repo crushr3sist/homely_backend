@@ -18,7 +18,7 @@ const PORT: number = parseInt(process.env.PORT, 10);
 
 const app: Express = express();
 app.use((_req, res, next) => {
-	res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+	res.header("Access-Control-Allow-Origin", "http://localhost:5173");
 	res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
 	res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
 	next();
@@ -26,16 +26,16 @@ app.use((_req, res, next) => {
 
 app.use("/streams", express.static(path.join(__dirname, "..", "videos")));
 app.use(helmet());
-app.use(cors({ origin: "http://localhost:8080", credentials: false }));
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/directory", directoryRouter);
 const server = http.createServer(app);
 
-app.get("/all_videos", async (_req, res): Promise<void> => {
-	const data = await returnShowsList();
-	res.status(200).send(data);
-});
+// app.get("/all_videos", async (_req, res): Promise<void> => {
+// 	const data = await returnShowsList();
+// 	res.status(200).send(data);
+// });
 
 server.listen(PORT, () => {
 	console.log(`Listening on http://localhost:${PORT}`);
